@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M Hafizh Ibrahim</title>
-    <!-- Menggunakan Font Poppins agar tampilan teks modern dan bersih -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome untuk Icon Media Sosial -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -57,10 +55,13 @@
             --primary-purple: #b624ff;
             --primary-gradient: linear-gradient(135deg, #b624ff, #8e00e6);
             --text-dark: #1a1a1a;
-            --text-muted: #666666;
-            /* WARNA BACKGROUND GRADIENT DIUBAH MENJADI WARM MINIMALIS (SOFT OFF-WHITE KE WARM WHITE) */
-            --bg-gradient: linear-gradient(135deg, #faf8f5 0%, #ffffff 100%);
-            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            --text-muted: #555555; /* Dibuat sedikit lebih gelap agar lebih kontras */
+            
+            /* --- BACKGROUND: EFEK MESH & GRID ABSTRACT DIGITAL --- */
+            --bg-texture: radial-gradient(circle at 80% 20%, rgba(182, 36, 255, 0.06) 0%, transparent 40%),
+                          radial-gradient(circle at 15% 80%, rgba(142, 0, 230, 0.05) 0%, transparent 40%),
+                          linear-gradient(135deg, #fcfbfa 0%, #f5f5f8 100%);
+            --grid-pattern: radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px);
         }
 
         body {
@@ -152,10 +153,23 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: var(--bg-gradient);
+            background: var(--bg-texture);
+            background-size: cover, cover, cover;
+            position: relative;
             display: flex;
             align-items: center;
             padding: 120px 10% 60px 10%;
+        }
+
+        /* Lapisan dot-grid transparan agar estetik */
+        .hero::before, #about::before, #contact::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: var(--grid-pattern);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .hero-container {
@@ -164,12 +178,15 @@
             gap: 50px;
             align-items: center;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-text h3 {
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 10px;
+            color: var(--text-dark);
         }
 
         .hero-text h1 {
@@ -242,15 +259,22 @@
             border-bottom-right-radius: 40px;
         }
 
-        /* Style latar belakang sub-menu disesuaikan tema minimalis hangat */
+        /* Style sub-menu menggunakan tema tekstur mesh digital */
         #about {
-            background-color: #faf8f5;
-            padding: 120px 10% 60px 10%;
+            background: var(--bg-texture);
+            position: relative;
+            padding: 140px 10% 60px 10%;
+        }
+
+        #about > div, #contact > div {
+            position: relative;
+            z-index: 2;
         }
 
         #contact {
-            background-color: #ffffff;
-            padding: 120px 10% 60px 10%;
+            background: var(--bg-texture);
+            position: relative;
+            padding: 140px 10% 60px 10%;
         }
 
         /* --- RESPONSIVE DESIGN (MOBILE OPTIMIZATION) --- */
@@ -281,7 +305,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR / HEADER -->
     <header>
         <a href="#" class="logo">Personal Website</a>
         <nav>
@@ -294,11 +317,9 @@
         <a href="https://wa.me/628815081653" target="_blank" class="btn-connect">CONNECT</a>
     </header>
 
-    <!-- WRAPPER UTAMA SLIDER -->
     <div class="slider-wrapper">
         <div class="main-slider-container">
             
-            <!-- ====== SECTION 1: HOME ====== -->
             <section id="home" class="hero">
                 <div class="hero-container">
                     <div class="hero-text">
@@ -319,42 +340,36 @@
                 </div>
             </section>
 
-            <!-- ====== SECTION 2: ABOUT ====== -->
             <section id="about">
-                <div style="max-width: 800px; margin: 100px auto 0 auto; padding: 0 20px; text-align: center;">
-                    <h2 style="font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">About Me</h2>
+                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
+                    <h2 style="font-size: 36px; font-weight: 700; color: #1a1a1a; margin-bottom: 20px;">About Me</h2>
                     
-                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-muted); margin-bottom: 15px;">
+                    <p style="font-size: 16px; line-height: 1.8; color: #444444; margin-bottom: 15px;">
                         Kenalin, nama saya <strong>M Hafizh Ibrahim</strong>. Saat ini saya berumur 15 tahun dan sekarang lagi fokus sekolah di kelas 9 <strong>MTs Darul Huda Mayak</strong>. Saya sengaja bikin website portfolio ini buat tempat seru-seruan sekaligus ngenalin diri secara digital.
                     </p>
                     
-                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-muted);">
+                    <p style="font-size: 16px; line-height: 1.8; color: #444444;">
                         Kalau di luar jam sekolah, kegiatan saya nggak jauh-jauh dari hobi main game dan ngulik hal-hal yang bau teknologi. Mulai dari ngikutin perkembangan gadget terbaru sampai nyoba belajar dasar-dasar coding website kayak gini menurut saya seru banget buat dipelajari lebih dalam.
                     </p>
                 </div>
             </section>
 
-            <!-- ====== SECTION 3: CONTACT ====== -->
             <section id="contact">
-                <div style="max-width: 800px; margin: 100px auto 0 auto; padding: 0 20px; text-align: center;">
-                    <h2 style="font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px;">Contact</h2>
-                    <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 40px;">Hubungi Saya</p>
+                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
+                    <h2 style="font-size: 36px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px;">Contact</h2>
+                    <p style="font-size: 16px; color: #444444; margin-bottom: 40px;">Hubungi Saya</p>
                     
-                    <!-- Container khusus untuk ikon media sosial yang rapi dan minimalis -->
                     <div style="display: flex; justify-content: center; gap: 35px; align-items: center;">
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/628815081653" target="_blank" title="WhatsApp" style="color: var(--text-dark); font-size: 32px; transition: color 0.3s ease; text-decoration: none;">
-                            <i class="fa-brands fa-whatsapp" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='var(--text-dark)'"></i>
+                        <a href="https://wa.me/628815081653" target="_blank" title="WhatsApp" style="color: #1a1a1a; font-size: 32px; transition: color 0.3s ease; text-decoration: none;">
+                            <i class="fa-brands fa-whatsapp" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='#1a1a1a'"></i>
                         </a>
                         
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/hpissnc_/" target="_blank" title="Instagram" style="color: var(--text-dark); font-size: 30px; transition: color 0.3s ease; text-decoration: none;">
-                            <i class="fa-brands fa-instagram" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='var(--text-dark)'"></i>
+                        <a href="https://www.instagram.com/hpissnc_/" target="_blank" title="Instagram" style="color: #1a1a1a; font-size: 30px; transition: color 0.3s ease; text-decoration: none;">
+                            <i class="fa-brands fa-instagram" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='#1a1a1a'"></i>
                         </a>
                         
-                        <!-- TikTok -->
-                        <a href="https://www.tiktok.com/@hpissnwn" target="_blank" title="TikTok" style="color: var(--text-dark); font-size: 28px; transition: color 0.3s ease; text-decoration: none;">
-                            <i class="fa-brands fa-tiktok" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='var(--text-dark)'"></i>
+                        <a href="https://www.tiktok.com/@hpissnwn" target="_blank" title="TikTok" style="color: #1a1a1a; font-size: 28px; transition: color 0.3s ease; text-decoration: none;">
+                            <i class="fa-brands fa-tiktok" onmouseover="this.style.color='#b624ff'" onmouseout="this.style.color='#1a1a1a'"></i>
                         </a>
                     </div>
                 </div>
@@ -363,7 +378,6 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT UNTUK MENGGERAKKAN HALAMAN -->
     <script>
         const sections = document.querySelectorAll('.hero, #about, #contact');
         
