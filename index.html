@@ -25,6 +25,7 @@
             width: 100%;
             height: 100%;
             position: relative;
+            z-index: 2; /* Memastikan seluruh halaman berada di atas kanvas background */
         }
         
         /* Mengunci posisi halaman agar tidak merusak layout grid asli */
@@ -37,6 +38,7 @@
             transition: transform 0.5s ease-in-out;
             box-sizing: border-box;
             overflow-y: auto;
+            background: transparent; /* Diubah ke transparan agar pola di belakang terlihat */
         }
 
         /* Posisi awal berjejer rapi di samping kanan layar luar */
@@ -68,16 +70,17 @@
             color: var(--text-dark);
         }
 
-        /* --- BACKGROUND KANVAS DIGITAL PLEXUS (POLA GARIS SIMPUL) --- */
+        /* --- FIX BACKGROUND KANVAS DIGITAL PLEXUS (Z-INDEX DIKUNCI DI BELAKANG) --- */
         .cyber-bg-canvas {
-            position: absolute;
+            position: fixed; /* Diubah ke fixed agar polanya tetap diam di latar paling belakang */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
-            opacity: 0.6; /* Membuat polanya terlihat menyatu halus di latar belakang */
+            z-index: -1; /* Mengunci kanvas agar berada di belakang seluruh elemen website */
+            opacity: 0.6;
+            background: var(--bg-texture);
         }
 
         /* --- NAVBAR --- */
@@ -164,7 +167,6 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: var(--bg-texture);
             position: relative;
             display: flex;
             align-items: center;
@@ -177,8 +179,6 @@
             gap: 50px;
             align-items: center;
             width: 100%;
-            position: relative;
-            z-index: 2;
         }
 
         .hero-text h3 {
@@ -257,9 +257,8 @@
             border-bottom-right-radius: 40px;
         }
 
-        /* Style sub-menu menggunakan tema tekstur mesh digital */
+        /* Style sub-menu */
         #about {
-            background: var(--bg-texture);
             position: relative;
             display: flex;
             align-items: center;
@@ -268,7 +267,6 @@
         }
 
         #contact {
-            background: var(--bg-texture);
             position: relative;
             display: flex;
             align-items: center;
@@ -304,7 +302,7 @@
 </head>
 <body>
 
-    <header style="position: absolute; width: 100%; z-index: 100;">
+    <header>
         <a href="#" class="logo">Personal Website</a>
         <nav>
             <ul>
@@ -342,7 +340,7 @@
             </section>
 
             <section id="about">
-                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center; position: relative; z-index: 5;">
+                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
                     <h2 style="font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">About Me</h2>
                     
                     <p style="font-size: 16px; line-height: 1.8; color: var(--text-muted); margin-bottom: 15px;">
@@ -356,7 +354,7 @@
             </section>
 
             <section id="contact">
-                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center; position: relative; z-index: 5;">
+                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center;">
                     <h2 style="font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px;">Contact</h2>
                     <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 40px;">Hubungi Saya</p>
                     
